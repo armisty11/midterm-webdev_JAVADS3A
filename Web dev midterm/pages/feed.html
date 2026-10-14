@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Explore Posts - WatchuThink</title>
+		<link rel="stylesheet" href="../src/css/style.css">
+	</head>
+
+	<body>
+
+		<header>
+			<h1>WatchuThink</h1>
+			<p>Explore what everyone is thinking.</p>
+		</header>
+
+		<div class="menu">
+			<a href="../index.html">Home</a>
+			<a href="feed.html">Explore Posts</a>
+			<a href="profile.html">Profile</a>
+			<a href="about.html">About Us</a>
+			<a href="login.html">Login</a>
+		</div>
+
+		<div class="feed-container">
+
+			<div class="sidebar">
+				<h3>Your Space ♡</h3>
+				<p>Share your thoughts and discover new perspectives.</p>
+
+				<a href="../index.html">⌂ Home</a>
+				<a href="feed.html">♡ Explore Posts</a>
+				<a href="profile.html">☺ My Profile</a>
+				<a href="about.html">♡ About Us</a>
+
+				<div class="about-section">
+					<h3>Community Reminder</h3>
+					<p>Be kind. Respect opinions. Keep sharing your thoughts!</p>
+				</div>
+			</div>
+
+			<div class="main-feed">
+
+				<div class="post">
+					<h2>What's on your mind?</h2>
+
+					<form id="postForm">
+						<input type="text" id="username" placeholder="Your username" required>
+						<textarea id="postContent" placeholder="Share your thoughts..." required></textarea>
+						<button type="submit">Post ♡</button>
+					</form>
+				</div>
+
+				<div id="posts">
+
+					<div class="post">
+						<h3>Anonymous</h3>
+						<p>Sometimes, doing your best is enough. 💗</p>
+
+						<div class="post-actions">
+							<button type="button" onclick="likePost(this)">♡ Like <span>0</span></button>
+						</div>
+
+						<div class="comment-section">
+							<h4>Comments</h4>
+							<div class="comments"></div>
+							<input type="text" placeholder="Write a comment...">
+							<button type="button" onclick="addComment(this)">Comment</button>
+						</div>
+					</div>
+
+					<div class="post">
+						<h3>Pink Thoughts</h3>
+						<p>What's one small thing that made you happy today?</p>
+
+						<div class="post-actions">
+							<button type="button" onclick="likePost(this)">♡ Like <span>0</span></button>
+						</div>
+
+						<div class="comment-section">
+							<h4>Comments</h4>
+							<div class="comments"></div>
+							<input type="text" placeholder="Write a comment...">
+							<button type="button" onclick="addComment(this)">Comment</button>
+						</div>
+					</div>
+
+					<div class="post">
+						<h3>Little Reminder</h3>
+						<p>You don't have to have everything figured out right now. Take your time. 🌷</p>
+
+						<div class="post-actions">
+							<button type="button" onclick="likePost(this)">♡ Like <span>0</span></button>
+						</div>
+
+						<div class="comment-section">
+							<h4>Comments</h4>
+							<div class="comments"></div>
+							<input type="text" placeholder="Write a comment...">
+							<button type="button" onclick="addComment(this)">Comment</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="page-footer">
+			SAY IT. SHARE IT. BE YOU. ♡
+		</div>
+
+		<script>
+			const likePost = (button) => {
+				const count = button.querySelector("span");
+				let likes = Number(count.innerHTML);
+
+				likes = likes + 1;
+				count.innerHTML = likes;
+			};
+
+			const addComment = (button) => {
+				const section = button.parentElement;
+				const input = section.querySelector("input");
+				const comments = section.querySelector(".comments");
+
+				if (input.value.trim() == "") {
+					alert("Please write a comment first.");
+				} else {
+					const comment = document.createElement("p");
+					comment.className = "comment";
+					comment.innerHTML = input.value;
+					comments.appendChild(comment);
+					input.value = "";
+				}
+			};
+
+			document.getElementById("postForm").addEventListener("submit", (event) => {
+				event.preventDefault();
+
+				const username = document.getElementById("username").value.trim();
+				const content = document.getElementById("postContent").value.trim();
+
+				if (username == "" || content == "") {
+					alert("Please complete both fields.");
+				} else {
+					const post = document.createElement("div");
+					post.className = "post";
+
+					post.innerHTML = `
+						<h3></h3>
+						<p></p>
+						<div class="post-actions">
+							<button type="button" onclick="likePost(this)">♡ Like <span>0</span></button>
+						</div>
+						<div class="comment-section">
+							<h4>Comments</h4>
+							<div class="comments"></div>
+							<input type="text" placeholder="Write a comment...">
+							<button type="button" onclick="addComment(this)">Comment</button>
+						</div>
+					`;
+
+					post.querySelector("h3").textContent = username;
+					post.querySelector("p").textContent = content;
+
+					document.getElementById("posts").prepend(post);
+
+					document.getElementById("username").value = "";
+					document.getElementById("postContent").value = "";
+				}
+			});
+		</script>
+
+	</body>
+
+</html>
+
+

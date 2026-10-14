@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>WatchuThink Profile</title>
+		<link rel="stylesheet" href="../src/css/style.css">
+	</head>
+
+	<body>
+
+		<header>
+			<h1>WatchuThink</h1>
+			<p>Your thoughts, your space.</p>
+		</header>
+
+		<div class="menu">
+			<a href="../index.html">Home</a>
+			<a href="feed.html">Explore Posts</a>
+			<a href="profile.html">Profile</a>
+			<a href="about.html">About Us</a>
+			<a href="login.html">Login</a>
+		</div>
+
+		<div class="profile-card">
+
+			<div class="profile-header">
+				<div class="profile-avatar">♡</div>
+				<h2>My Profile</h2>
+				<p>Your little corner of WatchuThink.</p>
+			</div>
+
+			<div class="profile-details">
+				<h3>Username</h3>
+				<p>Guest</p>
+
+				<h3>My Bio</h3>
+				<p id="bio">Just a person with thoughts to share.</p>
+
+				<button type="button" onclick="editBio()">Edit Bio</button>
+			</div>
+
+		</div>
+
+		<div class="profile-card">
+
+			<h2>My Posts</h2>
+			<p>Here are the thoughts you've shared.</p>
+
+			<div class="post">
+				<h3>Guest</h3>
+				<p>hello guys, kain po tayo team ryzza!</p>
+			</div>
+
+			<div class="post">
+				<h3>Guest</h3>
+				<p>oh nooooooooo the table is broken</p>
+			</div>
+
+		</div>
+
+		<div class="page-footer">
+			SAY IT. SHARE IT. BE YOU. ♡
+		</div>
+
+		<script>
+			const editBio = () => {
+				const bio = prompt("Enter your new bio:");
+
+				if (bio == null || bio.trim() == "") {
+					alert("Bio was not changed.");
+				} else {
+					document.getElementById("bio").innerHTML = bio;
+					alert("Bio updated successfully!");
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

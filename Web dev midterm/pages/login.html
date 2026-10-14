@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>WatchuThink Login</title>
+		<link rel="stylesheet" href="../src/css/style.css">
+	</head>
+
+	<body>
+		<div class="auth-box">
+			<h1>WatchuThink</h1>
+			<h2>Login</h2>
+
+			<p>Username</p>
+			<input id="user" type="text">
+
+			<p>Password</p>
+			<input id="pass" type="password">
+
+			<br><br>
+
+			<button type="button" onclick="loginButton(document.getElementById('user').value, document.getElementById('pass').value)">Login</button>
+
+			<p>Don't have an account?</p>
+			<a href="signup.html">Sign Up</a>
+
+			<p><a href="../index.html">Home</a></p>
+		</div>
+
+		<script>
+			const user = "armistyjava";
+			const pass = "ayoyqnahuhu";
+
+			const loginButton = (a, b) => {
+				if (a === user && b === pass) {
+					alert("Login successful!");
+					document.location.href = "feed.html";
+				} else {
+					alert("Incorrect username or password!");
+				}
+			}
+		</script>
+	</body>
+</html>
